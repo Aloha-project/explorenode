@@ -41,39 +41,21 @@ function telescopeSend($in)
 	}
 }
 
-if($_GET['q'] == "up" )
+if ($_POST['q'] == "up" || $_POST['q'] == "down" || $_POST['q'] == "left" || $_POST['q'] == "right")
 {
-	$toSend = "/* Java Script */ TheSkyXAction.execute(\"MOVE_UP\");";
-	
+	$toSend = "/* Java Script */ TheSkyXAction.execute(\"MOVE_" . strtoupper($_POST['q']) . "\");";
 
-	echo "Moving Telescope Up<br>Sending:" . $toSend ;
+	echo "Moving Telescope " . $_POST['q'] . "<br>Sending:" . $toSend ;
 	telescopeSend($toSend);
 
-	echo "<br> telescope moved up";
-}
-else if($_GET['q'] == "down" )
-{
-	$toSend = "/* Java Script */ TheSkyXAction.execute(\"MOVE_DOWN\");";
+	echo "<br> telescope moved " . $_POST['q'];
+} else if ($_POST['q'] == "in" || $_POST['q'] == "out") {
+	$toSend = "/* Java Script */ ccdsoftCamera.focMove" . ucfirst($_POST['q']) . "(100);";
 
-	echo "Moving Telescope Down<br>Sending:" . $toSend ;
+	echo "Moving Focuser " . $_POST['q'] . "<br>Sending:" . $toSend ;
 	telescopeSend($toSend);
-	
-}
-else if($_GET['q'] == "left" )
-{
-	$toSend = "/* Java Script */ TheSkyXAction.execute(\"MOVE_LEFT\");";
 
-	echo "Moving Telescope Left<br>Sending:" . $toSend ;
-	telescopeSend($toSend);
-	
-}
-else if($_GET['q'] == "right" )
-{
-	$toSend = "/* Java Script */ TheSkyXAction.execute(\"MOVE_RIGHT\");";
-
-	echo "Moving Telescope Right<br>Sending:" . $toSend ;
-	telescopeSend($toSend);
-	
+	echo "<br> focuser moved " . $_POST['q'];
 }
 ?>
 
