@@ -74,13 +74,13 @@ jQuery(document).ready(function() {
 })
 
 jQuery(document).ready(function() {
-	$('#bright0.button').css("background-image", "url(explorenode/css/images3/up.png)");
+	$('#bright0.button').css("background-image", "url(explorenode/css/images3/bright0.png)");
 	$('#bright0.button').css("background-size", "contain");
-	$('#bright1.button').css("background-image", "url(explorenode/css/images3/down.png)");
+	$('#bright1.button').css("background-image", "url(explorenode/css/images3/bright1.png)");
 	$('#bright1.button').css("background-size", "contain");
-	$('#bright2.button').css("background-image", "url(explorenode/css/images3/up.png)");
+	$('#bright2.button').css("background-image", "url(explorenode/css/images3/bright2.png)");
 	$('#bright2.button').css("background-size", "contain");
-	$('#bright3.button').css("background-image", "url(explorenode/css/images3/down.png)");
+	$('#bright3.button').css("background-image", "url(explorenode/css/images3/bright3.png)");
 	$('#bright3.button').css("background-size", "contain");
 
 	$('#bright0.button').click(function () {
@@ -102,7 +102,7 @@ jQuery(document).ready(function() {
 	$('#bright4.button').click(function () {
 		changeBrightness(4);
 	});
-}
+})
 
 function moveTelescope(direction) {
 	console.log("moving telescope ...");
