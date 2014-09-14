@@ -1,6 +1,6 @@
 <?php
 // Mallincam Xtreme with AstroLive
-$astrolive = new AstroLive("128.61.149.41");
+$astrolive = new AstroLive("132.160.97.41");
 
 // Connect AstroLive to the Mallincam if it's not already connected
 // AstroLive should be preconfigured for the correct video camera

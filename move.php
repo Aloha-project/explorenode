@@ -2,7 +2,7 @@
 function telescopeSend($in)
 {
 	
-	$address = '128.61.149.41';
+	$address = '132.160.97.41';
 	$port = 3040;
 	
 	echo "<br>Invoking telescope move through port: ".$port;
@@ -41,9 +41,31 @@ function telescopeSend($in)
 	}
 }
 
-if ($_POST['q'] == "up" || $_POST['q'] == "down" || $_POST['q'] == "left" || $_POST['q'] == "right")
+if ($_POST['q'] == "North" || $_POST['q'] == "South" || $_POST['q'] == "West" || $_POST['q'] == "East")
 {
-	$toSend = "/* Java Script */ TheSkyXAction.execute(\"MOVE_" . strtoupper($_POST['q']) . "\");";
+
+	$toSend = "/* Java Script */
+
+	var dJog = \"0.5\";
+	var dDirection = \"$_POST['q']\";
+	var Out;
+
+
+	sky6RASCOMTele.Connect();
+
+
+
+	if (sky6RASCOMTele.IsConnected==0)//Connect failed for some reason
+	{
+	        Out = \"Not connected\"
+	}
+	else
+	{
+	        sky6RASCOMTele.Jog(dJog, dDirection);
+	        Out  = \"OK\";
+	}";
+
+	//$toSend = "/* Java Script */ TheSkyXAction.execute(\"MOVE_" . strtoupper($_POST['q']) . "\");";
 
 	echo "Moving Telescope " . $_POST['q'] . "<br>Sending:" . $toSend ;
 	telescopeSend($toSend);
